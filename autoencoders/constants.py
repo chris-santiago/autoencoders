@@ -8,3 +8,4 @@ class Constants:
     SRC = HERE.parents[0]
     REPO = HERE.parents[1]
     DATA = REPO.joinpath("data")
+    SEED = 43

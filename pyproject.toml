@@ -48,6 +48,7 @@ dependencies = [
     "wandb>=0.15.8",
     "python-dotenv>=1.0.0",
     "matplotlib>=3.7.2",
+    "hydra-joblib-launcher>=1.2.0",
 ]
 
 
