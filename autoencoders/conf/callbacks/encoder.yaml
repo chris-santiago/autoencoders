@@ -6,3 +6,6 @@ early_stopping:
 
 model_checkpoint:
   monitor: train-loss
+
+log_images:
+  _target_: autoencoders.callbacks.LogReconstructedImagesCallback
