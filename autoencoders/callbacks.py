@@ -1,6 +1,7 @@
 from typing import Any
 
 import pytorch_lightning as pl
+import torch
 import wandb
 from pytorch_lightning.utilities.types import STEP_OUTPUT
 
@@ -29,9 +30,11 @@ class LogReconstructedImagesCallback(pl.Callback):
 
     def on_train_epoch_end(self, trainer: "pl.Trainer", pl_module: "pl.LightningModule") -> None:
         """Store original and reconstructed images."""
+        with torch.no_grad():
+            recons = pl_module(self.images)
         self.results["epoch"].append(self.epoch)
         self.results["original"].append(self.images.detach())
-        self.results["reconstructed"].append(pl_module(self.images).detach())
+        self.results["reconstructed"].append(recons.detach())
         self.epoch += 1
 
     def on_fit_end(self, trainer: "pl.Trainer", pl_module: "pl.LightningModule") -> None:

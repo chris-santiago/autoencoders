@@ -18,10 +18,12 @@ defaults:
   - trainer: default
   - callbacks: encoder
   # Use experiment configs to add some overrides
-  # - experiment: null
+  - experiment: null
   # Overrides must be last
   - override hydra/launcher: joblib
 
+tags: ["${data.name}", "${model.name}"]
+
 trainer:
   logger:
-    project: autoencoders
+    tags: ${tags}

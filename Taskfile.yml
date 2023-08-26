@@ -11,7 +11,7 @@ tasks:
   check-config:
     desc: Check Hydra configuration
     cmds:
-      - python autoencoders/train.py --cfg all --resolve
+      - python autoencoders/train.py --cfg all --resolve {{.CLI_ARGS}}
 
   wandb:
     desc: Login to Weights & Biases
