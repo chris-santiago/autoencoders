@@ -66,7 +66,9 @@ class AutoEncoder(pl.LightningModule):
         )
 
     def forward(self, x) -> Any:
-        return self.encoder(x)
+        input_shape = x.shape
+        out = self.decoder(self.encoder(x))
+        return out.reshape(-1, *input_shape[1:])
 
     def encode(self, x):
         self.encoder.eval()
@@ -75,8 +77,8 @@ class AutoEncoder(pl.LightningModule):
 
     def training_step(self, batch, idx) -> STEP_OUTPUT:
         original = batch[0]
-        reconstructed = self.decoder(self(original))
-        loss = self.loss_func(original, reconstructed.reshape(-1, *original.shape[1:]))
+        reconstructed = self(original)
+        loss = self.loss_func(original, reconstructed)
 
         self.log("loss", loss, on_step=True, on_epoch=True, prog_bar=True, logger=False)
         metrics = {"train-loss": loss}
