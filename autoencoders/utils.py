@@ -53,3 +53,15 @@ def instantiate_callbacks(callbacks_cfg: omegaconf.DictConfig) -> T.List[pl.Call
             callbacks.append(hydra.utils.instantiate(cb_conf))
 
     return callbacks
+
+
+def transpose_conv2d_shape(height, width, stride, padding, output_padding, kernel_size, dilation=1):
+    h = (height - 1) * stride - 2 * padding + dilation * (kernel_size - 1) + output_padding + 1
+    w = (width - 1) * stride - 2 * padding + dilation * (kernel_size - 1) + output_padding + 1
+    return h, w
+
+
+def conv2d_shape(height, width, stride, padding, kernel_size, dilation=1):
+    h = ((height + 2 * padding - dilation * (kernel_size - 1) - 1) / stride) + 1
+    w = ((width + 2 * padding - dilation * (kernel_size - 1) - 1) / stride) + 1
+    return h, w

@@ -1,3 +1,7 @@
+"""
+>>> hydra.initialize(config_path='autoencoders/conf', version_base="1.3")
+>>> cfg = hydra.compose(config_name='config')
+"""
 import hydra
 import omegaconf
 
