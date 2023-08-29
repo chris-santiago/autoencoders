@@ -42,7 +42,7 @@ class CNNAutoEncoder(AutoEncoder):
 
     def forward(self, x) -> Any:
         input_shape = x.shape
-        features = self.cnn(x.unsqueeze(1))  # add channel dim
+        features = self.cnn(x)
         out = self.decoder(self.encoder(features.squeeze()))
         return out.reshape(-1, *input_shape[1:])
 

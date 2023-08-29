@@ -14,4 +14,4 @@ nn:
   input_shape: [28, 28]
   loss_func:
     _target_: torch.nn.MSELoss
-  frozen_cnn: True
+  frozen_cnn: False
