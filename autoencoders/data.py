@@ -20,7 +20,7 @@ def scale_mnist(x: torch.Tensor) -> torch.Tensor:
     return x / 255
 
 
-class AutoEncoderDataset(torch.utils.data.Dataset):
+class MnistDataset(torch.utils.data.Dataset):
     def __init__(self, dataset, transform=None):
         self.dataset = dataset
         self.transform = transform
@@ -28,6 +28,14 @@ class AutoEncoderDataset(torch.utils.data.Dataset):
     def __len__(self):
         return len(self.dataset)
 
+    def __getitem__(self, idx):
+        inputs, outputs = self.dataset.__getitem__(idx)
+        if self.transform:
+            inputs = self.transform(inputs)
+        return inputs, outputs
+
+
+class AutoEncoderDataset(MnistDataset):
     def __getitem__(self, idx):
         inputs, _ = self.dataset.__getitem__(idx)
         if self.transform:
