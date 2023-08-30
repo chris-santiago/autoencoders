@@ -4,6 +4,8 @@ import pytorch_lightning as pl
 import torch
 import torch.nn as nn
 
+from autoencoders.modules import WhiteNoise
+
 
 class EncoderLayer(nn.Module):
     def __init__(
@@ -72,6 +74,16 @@ class CNNEncoder(nn.Module):
 
     def forward(self, x):
         return self.model(x)
+
+
+class NoisyCNNEncoder(CNNEncoder):
+    def __init__(self, channels_in: int, base_channels: int, latent_dim: int, factor: int = 1):
+        super().__init__(channels_in, base_channels, latent_dim)
+        self.noise = WhiteNoise(factor=factor)
+
+    def forward(self, x):
+        corrupted = self.noise(x)
+        return self.model(corrupted)
 
 
 class CNNDecoder(nn.Module):

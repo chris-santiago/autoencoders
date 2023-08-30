@@ -1,0 +1,20 @@
+# Defining the optimizer as a group default allows CLI override, e.g.
+# python train.py "optimizer@model.optimizer=sgd"
+# or via config "override scheduler@model.scheduler: cyclic"
+# See https://stackoverflow.com/questions/71438040/overwriting-hydra-configuration-groups-from-cli/71439510#71439510
+defaults:
+  - /optimizer@optimizer: adam
+  - /scheduler@scheduler: cyclic
+
+name: deep-DAE
+
+nn:
+  _target_: autoencoders.models.deep_ae.DeepAutoEncoder
+  base_channels: 16
+  latent_dim: 256
+  input_channels: 1
+  loss_func:
+    _target_: torch.nn.MSELoss
+  encoder:
+    _target_: autoencoders.models.deep_ae.NoisyCNNEncoder
+    _partial_: True
