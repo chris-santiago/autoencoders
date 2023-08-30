@@ -23,7 +23,7 @@ def evaluate_linear(
     x_test = encoder.encode(ds.data[train_length:].unsqueeze(1) / 255).numpy()
     y_test = ds.targets[train_length:]
 
-    lr = LogisticRegression(max_iter=300)
+    lr = LogisticRegression(max_iter=1000)
     lr.fit(x_train, y_train)
     labels = lr.predict(x_test)
     labels_ohe = F.one_hot(torch.tensor(labels)).float()

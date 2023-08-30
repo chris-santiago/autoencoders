@@ -28,7 +28,7 @@ def main(cfg):
 
     results = autoencoders.eval.evaluate_linear(module=model, trainer=trainer)
     autoencoders.eval.to_json(
-        results={cfg.model.name: results}, filepath=constants.OUTPUTS.joinpath("results.json")
+        results={cfg.model.name: results}, filepath=constants.OUTPUTS.joinpath("results.txt")
     )
 
 

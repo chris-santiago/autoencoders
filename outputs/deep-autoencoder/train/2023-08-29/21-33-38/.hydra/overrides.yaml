@@ -1,0 +1,2 @@
+- model=deep_ae
+- model.nn.latent_dim=32

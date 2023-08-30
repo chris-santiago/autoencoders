@@ -1,0 +1,6 @@
+{"autoencoder": {"acc": 0.8887, "auc": 0.9383}}
+{"DAE": {"acc": 0.7964, "auc": 0.8871}}
+{"deep-autoencoder": {"acc": 0.9276, "auc": 0.9599}}
+{"deep-DAE": {"acc": 0.8723, "auc": 0.9292}}
+{"deep-DAE": {"acc": 0.8581, "auc": 0.9213}}
+{"deep-autoencoder": {"acc": 0.9321, "auc": 0.9624}}
