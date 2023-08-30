@@ -5,7 +5,11 @@
 import hydra
 import omegaconf
 
+import autoencoders.constants
+import autoencoders.eval
 import autoencoders.utils
+
+constants = autoencoders.constants.Constants()
 
 
 @hydra.main(config_path="conf", config_name="config", version_base="1.3")
@@ -21,6 +25,11 @@ def main(cfg):
     trainer = hydra.utils.instantiate(cfg.trainer, callbacks=callbacks)
     trainer.fit(model=model, train_dataloaders=train_dl)
     trainer.checkpoint_callback.to_yaml()
+
+    results = autoencoders.eval.evaluate_linear(module=model, trainer=trainer)
+    autoencoders.eval.to_json(
+        results={cfg.model.name: results}, filepath=constants.OUTPUTS.joinpath("results.json")
+    )
 
 
 if __name__ == "__main__":
