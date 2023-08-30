@@ -46,6 +46,12 @@ class CNNAutoEncoder(AutoEncoder):
         out = self.decoder(self.encoder(features.squeeze()))
         return out.reshape(-1, *input_shape[1:])
 
+    def encode(self, x):
+        self.encoder.eval()
+        with torch.no_grad():
+            features = self.cnn(x)
+            return self.encoder(features.squeeze())
+
 
 class CNNDenoisingAutoEncoder(CNNAutoEncoder):
     def __init__(
