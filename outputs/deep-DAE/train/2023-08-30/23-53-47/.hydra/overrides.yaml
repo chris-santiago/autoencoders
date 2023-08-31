@@ -1,0 +1,3 @@
+- model=deep_dae
+- model.nn.base_channels=32
+- model.nn.latent_dim=128

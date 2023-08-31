@@ -5,3 +5,4 @@
 {"deep-DAE": {"acc": 0.8581, "auc": 0.9213}}
 {"deep-autoencoder": {"acc": 0.9321, "auc": 0.9624}}
 {"VAE": {"acc": 0.9725, "auc": 0.9847}}
+{"deep-DAE": {"acc": 0.8663, "auc": 0.9259}}

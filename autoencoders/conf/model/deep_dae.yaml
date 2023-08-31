@@ -16,5 +16,5 @@ nn:
   loss_func:
     _target_: torch.nn.MSELoss
   encoder:
-    _target_: autoencoders.models.deep_ae.NoisyCNNEncoder
+    _target_: autoencoders.modules.NoisyCNNEncoder
     _partial_: True
