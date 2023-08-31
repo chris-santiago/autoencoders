@@ -26,10 +26,13 @@ def main(cfg):
     trainer.fit(model=model, train_dataloaders=train_dl)
     trainer.checkpoint_callback.to_yaml()
 
-    results = autoencoders.eval.evaluate_linear(module=model, trainer=trainer)
-    autoencoders.eval.to_json(
-        results={cfg.model.name: results}, filepath=constants.OUTPUTS.joinpath("results.txt")
-    )
+    try:
+        results = autoencoders.eval.evaluate_linear(module=model, trainer=trainer)
+        autoencoders.eval.to_json(
+            results={cfg.model.name: results}, filepath=constants.OUTPUTS.joinpath("results.txt")
+        )
+    except NotImplementedError:
+        print("No encoder method implemented. Cannot evaluate linear discrimination.")
 
 
 if __name__ == "__main__":

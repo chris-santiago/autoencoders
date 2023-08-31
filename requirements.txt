@@ -44,7 +44,7 @@ pygments==2.16.1
 pyparsing==3.0.9
 python-dateutil==2.8.2
 python-dotenv==1.0.0
-pytorch-lightning==2.0.7
+pytorch-lightning==2.0.8
 PyYAML==6.0.1
 requests==2.31.0
 rich==13.5.2
@@ -62,6 +62,6 @@ torchmetrics==1.0.3
 torchvision==0.15.2
 tqdm==4.66.1
 typing-extensions==4.7.1
-urllib3==2.0.4
+urllib3==1.26.16
 wandb==0.15.8
 yarl==1.9.2

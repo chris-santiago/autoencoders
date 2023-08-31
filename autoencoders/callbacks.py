@@ -32,6 +32,11 @@ class LogReconstructedImagesCallback(pl.Callback):
         """Store original and reconstructed images."""
         with torch.no_grad():
             recons = pl_module(self.images)
+
+        # VAE outputs reconstruction and dist
+        if isinstance(recons, tuple):
+            recons = recons[0]
+
         self.results["epoch"].append(self.epoch)
         self.results["original"].append(self.images.detach())
         self.results["reconstructed"].append(recons.detach())

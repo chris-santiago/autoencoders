@@ -711,7 +711,7 @@ summary = "Read key-value pairs from a .env file and set them as environment var
 
 [[package]]
 name = "pytorch-lightning"
-version = "2.0.7"
+version = "2.0.8"
 requires_python = ">=3.8"
 summary = "PyTorch Lightning is the lightweight PyTorch wrapper for ML researchers. Scale your models. Write less boilerplate."
 dependencies = [
@@ -952,8 +952,8 @@ summary = "Provider of IANA time zone data"
 
 [[package]]
 name = "urllib3"
-version = "2.0.4"
-requires_python = ">=3.7"
+version = "1.26.16"
+requires_python = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
 summary = "HTTP library with thread-safe connection pooling, file post, and more."
 
 [[package]]
@@ -1008,7 +1008,7 @@ dependencies = [
 lock_version = "4.2"
 cross_platform = true
 groups = ["default", "docs", "qa", "test"]
-content_hash = "sha256:2f10962fe1d924c618e8d892d8491ba60ba62f1c4ac9b560f9e5127d0e8e9b6f"
+content_hash = "sha256:03ff53682e6fc6ad4d78bd78feb518efd6abc6af29ad11898c7a2d0c8c6931d6"
 
 [metadata.files]
 "aiohttp 3.8.5" = [
@@ -2142,9 +2142,9 @@ content_hash = "sha256:2f10962fe1d924c618e8d892d8491ba60ba62f1c4ac9b560f9e5127d0
     {url = "https://files.pythonhosted.org/packages/31/06/1ef763af20d0572c032fa22882cfbfb005fba6e7300715a37840858c919e/python-dotenv-1.0.0.tar.gz", hash = "sha256:a8df96034aae6d2d50a4ebe8216326c61c3eb64836776504fcca410e5937a3ba"},
     {url = "https://files.pythonhosted.org/packages/44/2f/62ea1c8b593f4e093cc1a7768f0d46112107e790c3e478532329e434f00b/python_dotenv-1.0.0-py3-none-any.whl", hash = "sha256:f5971a9226b701070a4bf2c38c89e5a3f0d64de8debda981d1db98583009122a"},
 ]
-"pytorch-lightning 2.0.7" = [
-    {url = "https://files.pythonhosted.org/packages/91/4c/842af2cfc7e1e3a62b6b85724d9ffa1a92806de3a7f43613416b92a7f8cd/pytorch-lightning-2.0.7.tar.gz", hash = "sha256:4e6bc1e1f7b0c69016ea2fe0616b18fa62bd3d8661c7ff02c11d317746cfc5f5"},
-    {url = "https://files.pythonhosted.org/packages/d5/ef/39994adec1fe1d5f25fd0dd0a82abcd8bd61fc968283790b9da7463f0279/pytorch_lightning-2.0.7-py3-none-any.whl", hash = "sha256:720add0c42d8eb042f371a77581feb2796429cffbe635156e9343775e9e5ba35"},
+"pytorch-lightning 2.0.8" = [
+    {url = "https://files.pythonhosted.org/packages/57/8c/97edac337566f66b1aa5a08457ace7f27d0697a03626ac41713ff1ed3d5e/pytorch_lightning-2.0.8-py3-none-any.whl", hash = "sha256:718d11f22551d95ef38614b4727433553c95ea2b50cf843938fb13baf34325a6"},
+    {url = "https://files.pythonhosted.org/packages/94/eb/1e8bd445dab4e0a737ad45e3bf711a749aabad7ae13d279d05889e5b1240/pytorch-lightning-2.0.8.tar.gz", hash = "sha256:fb7e8fbe473158b2c1666b6b31fb996c8aa2c3f5e8e2a54a3f50a7b5b2d00a20"},
 ]
 "pytz 2023.3" = [
     {url = "https://files.pythonhosted.org/packages/5e/32/12032aa8c673ee16707a9b6cdda2b09c0089131f35af55d443b6a9c69c1d/pytz-2023.3.tar.gz", hash = "sha256:1d8ce29db189191fb55338ee6d0387d82ab59f3d00eac103412d64e0ebd0c588"},
@@ -2585,9 +2585,9 @@ content_hash = "sha256:2f10962fe1d924c618e8d892d8491ba60ba62f1c4ac9b560f9e5127d0
     {url = "https://files.pythonhosted.org/packages/70/e5/81f99b9fced59624562ab62a33df639a11b26c582be78864b339dafa420d/tzdata-2023.3.tar.gz", hash = "sha256:11ef1e08e54acb0d4f95bdb1be05da659673de4acbd21bf9c69e94cc5e907a3a"},
     {url = "https://files.pythonhosted.org/packages/d5/fb/a79efcab32b8a1f1ddca7f35109a50e4a80d42ac1c9187ab46522b2407d7/tzdata-2023.3-py2.py3-none-any.whl", hash = "sha256:7e65763eef3120314099b6939b5546db7adce1e7d6f2e179e3df563c70511eda"},
 ]
-"urllib3 2.0.4" = [
-    {url = "https://files.pythonhosted.org/packages/31/ab/46bec149bbd71a4467a3063ac22f4486ecd2ceb70ae8c70d5d8e4c2a7946/urllib3-2.0.4.tar.gz", hash = "sha256:8d22f86aae8ef5e410d4f539fde9ce6b2113a001bb4d189e0aed70642d602b11"},
-    {url = "https://files.pythonhosted.org/packages/9b/81/62fd61001fa4b9d0df6e31d47ff49cfa9de4af03adecf339c7bc30656b37/urllib3-2.0.4-py3-none-any.whl", hash = "sha256:de7df1803967d2c2a98e4b11bb7d6bd9210474c46e8a0401514e3a42a75ebde4"},
+"urllib3 1.26.16" = [
+    {url = "https://files.pythonhosted.org/packages/c5/05/c214b32d21c0b465506f95c4f28ccbcba15022e000b043b72b3df7728471/urllib3-1.26.16-py2.py3-none-any.whl", hash = "sha256:8d36afa7616d8ab714608411b4a3b13e58f463aee519024578e062e141dce20f"},
+    {url = "https://files.pythonhosted.org/packages/e2/7d/539e6f0cf9f0b95b71dd701a56dae89f768cd39fd8ce0096af3546aeb5a3/urllib3-1.26.16.tar.gz", hash = "sha256:8f135f6502756bde6b2a9b28989df5fbe87c9970cecaa69041edcce7f0589b14"},
 ]
 "virtualenv 20.24.3" = [
     {url = "https://files.pythonhosted.org/packages/17/8d/6989e5dcd812520cbf9f31be2b08643ae3a895586601bbab501df8ed6e54/virtualenv-20.24.3-py3-none-any.whl", hash = "sha256:95a6e9398b4967fbcb5fef2acec5efaf9aa4972049d9ae41f95e0972a683fd02"},
