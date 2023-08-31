@@ -3,7 +3,8 @@ from typing import Optional
 import torch
 import torch.nn as nn
 
-from autoencoders.models.deep_ae import CNNDecoder, CNNEncoder, DeepAutoEncoder
+from autoencoders.models.deep_ae import DeepAutoEncoder
+from autoencoders.modules import CNNDecoder, CNNEncoder
 
 
 class VAE(DeepAutoEncoder):

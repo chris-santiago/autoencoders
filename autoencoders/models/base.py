@@ -5,18 +5,7 @@ import torch
 import torch.nn as nn
 from pytorch_lightning.utilities.types import STEP_OUTPUT
 
-
-class EncoderLayer(nn.Module):
-    def __init__(self, input_size, output_size):
-        super().__init__()
-        self.size_in = input_size
-        self.size_out = output_size
-        self.model = nn.Sequential(
-            nn.Linear(input_size, output_size), nn.BatchNorm1d(output_size), nn.ReLU()
-        )
-
-    def forward(self, x):
-        return self.model(x)
+from autoencoders.modules import EncoderLayer
 
 
 class AutoEncoder(pl.LightningModule):
