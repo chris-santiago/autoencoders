@@ -15,6 +15,17 @@ class ResnetEncoder(ResNet):
             in_channels, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False
         )
 
+        self.projection = nn.Sequential(
+            ProjectionLayer(latent_dim, latent_dim),
+            ProjectionLayer(latent_dim, latent_dim),
+            nn.Linear(latent_dim, latent_dim),
+            nn.BatchNorm1d(latent_dim, affine=False),
+        )
+
+    def forward(self, x):
+        z = self._forward_impl(x)  # ResNet method
+        return self.projection(z)
+
 
 class ProjectionLayer(nn.Module):
     def __init__(self, input_size, output_size):
@@ -41,16 +52,6 @@ class SimSiam(BaseModule):
     ):
         super().__init__(loss_func, optim, scheduler)
         self.encoder = encoder
-
-        # TODO do something with this
-        # proj_dim = self.encoder.fc.weight.shape[1]
-        # self.encoder.fc = nn.Sequential(
-        #     ProjectionLayer(proj_dim, proj_dim),
-        #     ProjectionLayer(proj_dim, proj_dim),
-        #     self.encoder.fc,
-        #     nn.BatchNorm1d(dim, affine=False)
-        # )
-        # self.encoder.fc[2].bias.requires_grad = False  # no bias as it is followed by BN
 
         self.predictor = nn.Sequential(
             nn.LazyLinear(dim), ProjectionLayer(dim, pred_dim), nn.Linear(pred_dim, dim)
