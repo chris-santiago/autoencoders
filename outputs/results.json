@@ -102,5 +102,21 @@
       "auc": 0.9326
     },
     "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SimSiam/train/2023-09-01/08-59-47/checkpoints/epoch=20-step=4935.ckpt"
+  },
+  {
+    "model": "SimSiam",
+    "metrics": {
+      "acc": 0.9624,
+      "auc": 0.9791
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SimSiam/train/2023-09-01/10-39-53/checkpoints/epoch=35-step=8460.ckpt"
+  },
+  {
+    "model": "SimSiam",
+    "metrics": {
+      "acc": 0.9546,
+      "auc": 0.9748
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SimSiam/train/2023-09-01/10-49-10/checkpoints/epoch=16-step=3995.ckpt"
   }
 ]

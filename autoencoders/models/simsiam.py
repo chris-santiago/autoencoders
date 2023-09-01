@@ -6,6 +6,7 @@ from torchvision.models import ResNet
 from torchvision.models.resnet import BasicBlock
 
 from autoencoders.models.base import BaseModule
+from autoencoders.modules import CNNEncoder
 
 
 class ResnetEncoder(ResNet):
@@ -38,6 +39,22 @@ class ProjectionLayer(nn.Module):
 
     def forward(self, x):
         return self.model(x)
+
+
+class CNNEncoderProjection(CNNEncoder):
+    def __init__(self, channels_in: int, base_channels: int, latent_dim: int):
+        super().__init__(channels_in, base_channels, latent_dim)
+
+        self.projection = nn.Sequential(
+            ProjectionLayer(latent_dim, latent_dim),
+            ProjectionLayer(latent_dim, latent_dim),
+            nn.Linear(latent_dim, latent_dim),
+            nn.BatchNorm1d(latent_dim, affine=False),
+        )
+
+    def forward(self, x):
+        z = self.model(x)
+        return self.projection(z)
 
 
 class SimSiam(BaseModule):

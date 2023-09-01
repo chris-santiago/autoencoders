@@ -1,0 +1,24 @@
+# @package _global_
+
+# to execute this experiment run:
+# python train.py experiment=example
+
+defaults:
+  - override /data: simsiam
+  - override /model: simsiam
+  - override /trainer: default
+  - override /callbacks: siam
+
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+tags: ["${data.name}", "${model.name}", "cyclicLR"]
+
+model:
+  nn:
+    _target_: autoencoders.models.simsiam.SimSiam
+    encoder:
+      _target_: autoencoders.models.simsiam.ResnetEncoder
+      latent_dim: ${model.nn.dim}
+    dim: 1024
+    pred_dim: 512
