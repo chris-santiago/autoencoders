@@ -12,7 +12,7 @@ class DenoisingAutoEncoder(AutoEncoder):
         self,
         layers: Tuple[int, ...],
         input_shape: Tuple[int, int],
-        loss_func: nn.modules.loss._Loss = nn.MSELoss(),
+        loss_func: nn.Module = nn.MSELoss(),
         optim: Optional[torch.optim.Optimizer] = None,
         scheduler: Optional[torch.optim.lr_scheduler.LRScheduler] = None,
     ):

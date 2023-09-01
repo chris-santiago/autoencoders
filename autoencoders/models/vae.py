@@ -15,7 +15,7 @@ class VAE(DeepAutoEncoder):
         encoder: nn.Module = CNNEncoder,
         decoder: nn.Module = CNNDecoder,
         input_channels: int = 1,
-        loss_func: nn.modules.loss._Loss = nn.MSELoss(),
+        loss_func: nn.Module = nn.MSELoss(),
         optim: Optional[torch.optim.Optimizer] = None,
         scheduler: Optional[torch.optim.lr_scheduler.LRScheduler] = None,
         kl_coef: float = 0.1,
@@ -25,8 +25,6 @@ class VAE(DeepAutoEncoder):
         )
         self.kl_coef = kl_coef
         self.norm = torch.distributions.Normal(0, 1)
-
-        self.save_hyperparameters(ignore=["loss_func"])
 
         self.mu = nn.LazyLinear(latent_dim)
         self.sigma = nn.LazyLinear(latent_dim)

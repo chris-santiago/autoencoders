@@ -8,24 +8,47 @@ from pytorch_lightning.utilities.types import STEP_OUTPUT
 from autoencoders.modules import EncoderLayer
 
 
-class AutoEncoder(pl.LightningModule):
+class BaseModule(pl.LightningModule):
     def __init__(
         self,
-        layers: Tuple[int, ...],
-        input_shape: Tuple[int, int],
-        loss_func: nn.modules.loss._Loss = nn.MSELoss(),
+        loss_func: nn.Module = nn.MSELoss(),
         optim: Optional[torch.optim.Optimizer] = None,
         scheduler: Optional[torch.optim.lr_scheduler.LRScheduler] = None,
     ):
         super().__init__()
-        self.input_shape = input_shape
-        self.encoder_shape = layers
-        self.decoder_shape = tuple(reversed(layers))
         self.loss_func = loss_func
         self.optim = optim
         self.scheduler = scheduler
+        self.save_hyperparameters(ignore=["loss_func"])
 
-        self.save_hyperparameters()
+    def configure_optimizers(self) -> Any:
+        optim = self.optim(self.parameters()) if self.optim else torch.optim.Adam(self.parameters())
+        if self.scheduler:
+            scheduler = self.scheduler(optim)
+            return {
+                "optimizer": optim,
+                "lr_scheduler": {
+                    "scheduler": scheduler,
+                    "monitor": "train-loss",
+                    "interval": "epoch",
+                },
+            }
+        return optim  # torch.optim.Adam(self.parameters())
+
+
+class AutoEncoder(BaseModule):
+    def __init__(
+        self,
+        layers: Tuple[int, ...],
+        input_shape: Tuple[int, int],
+        loss_func: nn.Module = nn.MSELoss(),
+        optim: Optional[torch.optim.Optimizer] = None,
+        scheduler: Optional[torch.optim.lr_scheduler.LRScheduler] = None,
+    ):
+        super().__init__(loss_func, optim, scheduler)
+        self.input_shape = input_shape
+        self.encoder_shape = layers
+        self.decoder_shape = tuple(reversed(layers))
 
         self.encoder_layers = nn.ModuleList(
             [
@@ -73,17 +96,3 @@ class AutoEncoder(pl.LightningModule):
         metrics = {"train-loss": loss}
         self.log_dict(metrics, on_step=False, on_epoch=True, prog_bar=False, logger=True)
         return loss
-
-    def configure_optimizers(self) -> Any:
-        optim = self.optim(self.parameters()) if self.optim else torch.optim.Adam(self.parameters())
-        if self.scheduler:
-            scheduler = self.scheduler(optim)
-            return {
-                "optimizer": optim,
-                "lr_scheduler": {
-                    "scheduler": scheduler,
-                    "monitor": "train-loss",
-                    "interval": "epoch",
-                },
-            }
-        return optim  # torch.optim.Adam(self.parameters())
