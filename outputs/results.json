@@ -9,3 +9,5 @@
 {"SimSiam": {"acc": 0.9658, "auc": 0.981}}
 {"SimSiam": {"acc": 0.6999, "auc": 0.8339}}
 {"SimSiam": {"acc": 0.7935, "auc": 0.8857}}
+{"SimSiam": {"acc": 0.6589, "auc": 0.8109}}
+{"SimSiam": {"acc": 0.8781, "auc": 0.9326}}

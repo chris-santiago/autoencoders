@@ -44,9 +44,9 @@ class AutoEncoderDataset(MnistDataset):
 
 
 class SimSiamDataset(MnistDataset):
-    def __init__(self, dataset, transform=scale_mnist):
+    def __init__(self, dataset, transform=scale_mnist, num_ops: int = 1):
         super().__init__(dataset, transform)
-        self.augment = T.RandAugment(num_ops=1)
+        self.augment = T.RandAugment(num_ops=num_ops)
 
     def __getitem__(self, idx):
         inputs = self.dataset.data.__getitem__(idx)

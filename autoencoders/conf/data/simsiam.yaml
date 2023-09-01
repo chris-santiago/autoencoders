@@ -9,6 +9,7 @@ train:
     dataset:
       _target_: autoencoders.data.get_mnist_dataset
       train: True
+    num_ops: 1
   batch_size: ${data.batch_size}
   shuffle: True
   num_workers: ${data.n_workers}
@@ -20,6 +21,7 @@ valid:
     dataset:
       _target_: autoencoders.data.get_mnist_dataset
       train: False
+    num_ops: 1
   batch_size: ${data.batch_size}
   shuffle: False
   num_workers: ${data.n_workers}
