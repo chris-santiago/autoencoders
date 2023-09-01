@@ -27,10 +27,10 @@ def main(cfg):
     trainer.checkpoint_callback.to_yaml()
 
     try:
+        meta = {"model": cfg.model.name}
         results = autoencoders.eval.evaluate_linear(module=model, trainer=trainer)
-        autoencoders.eval.to_json(
-            results={cfg.model.name: results}, filepath=constants.OUTPUTS.joinpath("results.txt")
-        )
+        meta.update(results)
+        autoencoders.eval.to_json(results=meta, filepath=constants.OUTPUTS.joinpath("results.json"))
     except NotImplementedError:
         print("No encoder method implemented. Cannot evaluate linear discrimination.")
 

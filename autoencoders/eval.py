@@ -33,11 +33,17 @@ def evaluate_linear(
 
     # pull out .item() for metrics tensors as tensors are not json serializable
     return {
-        "acc": round(acc(torch.tensor(labels), y_test).item(), 4),
-        "auc": round(auc(labels_ohe, y_test).item(), 4),
+        "metrics": {
+            "acc": round(acc(torch.tensor(labels), y_test).item(), 4),
+            "auc": round(auc(labels_ohe, y_test).item(), 4),
+        },
+        "ckpt": ckpt_path,
     }
 
 
 def to_json(results: Dict, filepath: Union[pathlib.Path, str]):
-    with open(filepath, "a") as fp:
-        fp.write(json.dumps(results) + "\n")
+    with open(filepath, "r") as fp:
+        res = json.load(fp)
+    res.append(results)
+    with open(filepath, "w") as fp:
+        json.dump(res, fp, indent=2)
