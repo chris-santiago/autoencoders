@@ -6,3 +6,6 @@
 {"deep-autoencoder": {"acc": 0.9321, "auc": 0.9624}}
 {"VAE": {"acc": 0.9725, "auc": 0.9847}}
 {"deep-DAE": {"acc": 0.8663, "auc": 0.9259}}
+{"SimSiam": {"acc": 0.9658, "auc": 0.981}}
+{"SimSiam": {"acc": 0.6999, "auc": 0.8339}}
+{"SimSiam": {"acc": 0.7935, "auc": 0.8857}}

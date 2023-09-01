@@ -1,0 +1,17 @@
+# Defining the optimizer as a group default allows CLI override, e.g.
+# python train.py "optimizer@model.optimizer=sgd"
+# or via config "override scheduler@model.scheduler: cyclic"
+# See https://stackoverflow.com/questions/71438040/overwriting-hydra-configuration-groups-from-cli/71439510#71439510
+defaults:
+  - /optimizer@optimizer: adam
+  - /scheduler@scheduler: plateau
+
+name: SimSiam
+
+nn:
+  _target_: autoencoders.models.simsiam.SimSiam
+  encoder:
+    _target_: autoencoders.models.simsiam.ResnetEncoder
+    latent_dim: ${model.nn.dim}
+  dim: 1024
+  pred_dim: 512
