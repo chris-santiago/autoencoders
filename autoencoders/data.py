@@ -3,7 +3,7 @@ from typing import Callable
 import torch
 import torch.utils.data
 import torchvision.datasets
-import torchvision.transforms.transforms as T
+import torchvision.transforms as T
 
 import autoencoders.constants
 
@@ -41,3 +41,16 @@ class AutoEncoderDataset(MnistDataset):
         if self.transform:
             inputs = self.transform(inputs)
         return inputs, inputs
+
+
+class SimSiamDataset(MnistDataset):
+    def __init__(self, dataset, transform=scale_mnist):
+        super().__init__(dataset, transform)
+        self.augment = T.RandAugment(num_ops=1)
+
+    def __getitem__(self, idx):
+        inputs = self.dataset.data.__getitem__(idx)
+        aug_1, aug_2 = [self.augment(inputs.unsqueeze(0)) for _ in range(2)]
+        if self.transform:
+            self.transform(aug_1), self.transform(aug_2)
+        return aug_1, aug_2
