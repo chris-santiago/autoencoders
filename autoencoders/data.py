@@ -52,5 +52,5 @@ class SimSiamDataset(MnistDataset):
         inputs = self.dataset.data.__getitem__(idx)
         aug_1, aug_2 = [self.augment(inputs.unsqueeze(0)) for _ in range(2)]
         if self.transform:
-            self.transform(aug_1), self.transform(aug_2)
+            aug_1, aug_2 = self.transform(aug_1), self.transform(aug_2)
         return aug_1, aug_2
