@@ -1,13 +1,106 @@
-{"autoencoder": {"acc": 0.8887, "auc": 0.9383}}
-{"DAE": {"acc": 0.7964, "auc": 0.8871}}
-{"deep-autoencoder": {"acc": 0.9276, "auc": 0.9599}}
-{"deep-DAE": {"acc": 0.8723, "auc": 0.9292}}
-{"deep-DAE": {"acc": 0.8581, "auc": 0.9213}}
-{"deep-autoencoder": {"acc": 0.9321, "auc": 0.9624}}
-{"VAE": {"acc": 0.9725, "auc": 0.9847}}
-{"deep-DAE": {"acc": 0.8663, "auc": 0.9259}}
-{"SimSiam": {"acc": 0.9658, "auc": 0.981}}
-{"SimSiam": {"acc": 0.6999, "auc": 0.8339}}
-{"SimSiam": {"acc": 0.7935, "auc": 0.8857}}
-{"SimSiam": {"acc": 0.6589, "auc": 0.8109}}
-{"SimSiam": {"acc": 0.8781, "auc": 0.9326}}
+[
+  {
+    "model": "autoencoder",
+    "metrics": {
+      "acc": 0.8887,
+      "auc": 0.9383
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/autoencoder/train/2023-08-29/21-13-51/checkpoints/epoch=11-step=2820.ckpt"
+  },
+  {
+    "model": "DAE",
+    "metrics": {
+      "acc": 0.7964,
+      "auc": 0.8871
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/DAE/train/2023-08-29/21-19-54/checkpoints/epoch=10-step=2585.ckpt"
+  },
+  {
+    "model": "deep-autoencoder",
+    "metrics": {
+      "acc": 0.9276,
+      "auc": 0.9599
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/deep-autoencoder/train/2023-08-29/21-24-59/checkpoints/epoch=11-step=2820.ckpt"
+  },
+  {
+    "model": "deep-DAE",
+    "metrics": {
+      "acc": 0.8723,
+      "auc": 0.9292
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/deep-DAE/train/2023-08-29/21-28-11/checkpoints/epoch=5-step=1410.ckpt"
+  },
+  {
+    "model": "deep-DAE",
+    "metrics": {
+      "acc": 0.8581,
+      "auc": 0.9213
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/deep-DAE/train/2023-08-29/21-31-57/checkpoints/epoch=5-step=1410.ckpt"
+  },
+  {
+    "model": "deep-autoencoder",
+    "metrics": {
+      "acc": 0.9321,
+      "auc": 0.9624
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/deep-autoencoder/train/2023-08-29/21-33-38/checkpoints/epoch=9-step=2350.ckpt"
+  },
+  {
+    "model": "VAE",
+    "metrics": {
+      "acc": 0.9725,
+      "auc": 0.9847
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/VAE/train/2023-08-30/21-54-33/checkpoints/epoch=32-step=7755.ckpt"
+  },
+  {
+    "model": "deep-DAE",
+    "metrics": {
+      "acc": 0.8663,
+      "auc": 0.9259
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/deep-DAE/train/2023-08-30/23-53-47/checkpoints/epoch=4-step=1175.ckpt"
+  },
+  {
+    "model": "SimSiam",
+    "metrics": {
+      "acc": 0.9658,
+      "auc": 0.981
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SimSiam/train/2023-08-31/22-21-11/checkpoints/epoch=15-step=3760.ckpt"
+  },
+  {
+    "model": "SimSiam",
+    "metrics": {
+      "acc": 0.6999,
+      "auc": 0.8339
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SimSiam/train/2023-08-31/22-46-11/checkpoints/epoch=0-step=235.ckpt"
+  },
+  {
+    "model": "SimSiam",
+    "metrics": {
+      "acc": 0.7935,
+      "auc": 0.8857
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SimSiam/train/2023-08-31/22-47-51/checkpoints/epoch=4-step=1175.ckpt"
+  },
+  {
+    "model": "SimSiam",
+    "metrics": {
+      "acc": 0.6589,
+      "auc": 0.8109
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SimSiam/train/2023-09-01/00-25-03/checkpoints/epoch=9-step=2350.ckpt"
+  },
+  {
+    "model": "SimSiam",
+    "metrics": {
+      "acc": 0.8781,
+      "auc": 0.9326
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SimSiam/train/2023-09-01/08-59-47/checkpoints/epoch=20-step=4935.ckpt"
+  }
+]
