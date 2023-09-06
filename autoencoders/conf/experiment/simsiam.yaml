@@ -18,7 +18,7 @@ model:
   nn:
     _target_: autoencoders.models.simsiam.SimSiam
     encoder:
-      _target_: autoencoders.models.simsiam.ResnetEncoder
+      _target_: autoencoders.modules.ResnetEncoder
       latent_dim: ${model.nn.dim}
     dim: 1024
     pred_dim: 512

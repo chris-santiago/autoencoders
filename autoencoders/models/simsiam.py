@@ -2,59 +2,9 @@ from typing import Optional
 
 import torch
 import torch.nn as nn
-from torchvision.models import ResNet
-from torchvision.models.resnet import BasicBlock
 
 from autoencoders.models.base import BaseModule
-from autoencoders.modules import CNNEncoder
-
-
-class ResnetEncoder(ResNet):
-    def __init__(self, in_channels: int = 1, latent_dim: int = 512):
-        super().__init__(BasicBlock, [2, 2, 2, 2], num_classes=latent_dim)
-        self.conv1 = nn.Conv2d(
-            in_channels, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False
-        )
-
-        self.projection = nn.Sequential(
-            ProjectionLayer(latent_dim, latent_dim),
-            ProjectionLayer(latent_dim, latent_dim),
-            nn.Linear(latent_dim, latent_dim),
-            nn.BatchNorm1d(latent_dim, affine=False),
-        )
-
-    def forward(self, x):
-        z = self._forward_impl(x)  # ResNet method
-        return self.projection(z)
-
-
-class ProjectionLayer(nn.Module):
-    def __init__(self, input_size, output_size):
-        super().__init__()
-        self.size_in = input_size
-        self.size_out = output_size
-        self.model = nn.Sequential(
-            nn.Linear(input_size, output_size, bias=False), nn.BatchNorm1d(output_size), nn.ReLU()
-        )
-
-    def forward(self, x):
-        return self.model(x)
-
-
-class CNNEncoderProjection(CNNEncoder):
-    def __init__(self, channels_in: int, base_channels: int, latent_dim: int):
-        super().__init__(channels_in, base_channels, latent_dim)
-
-        self.projection = nn.Sequential(
-            ProjectionLayer(latent_dim, latent_dim),
-            ProjectionLayer(latent_dim, latent_dim),
-            nn.Linear(latent_dim, latent_dim),
-            nn.BatchNorm1d(latent_dim, affine=False),
-        )
-
-    def forward(self, x):
-        z = self.model(x)
-        return self.projection(z)
+from autoencoders.modules import ProjectionLayer
 
 
 class SimSiam(BaseModule):

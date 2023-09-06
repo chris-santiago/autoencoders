@@ -11,7 +11,7 @@ name: SimSiam
 nn:
   _target_: autoencoders.models.simsiam.SimSiam
   encoder:
-    _target_: autoencoders.models.simsiam.CNNEncoderProjection
+    _target_: autoencoders.modules.CNNEncoderProjection
     channels_in: 1
     base_channels: 32
     latent_dim: ${model.nn.dim}
