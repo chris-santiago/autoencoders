@@ -134,5 +134,29 @@
       "auc": 0.9924
     },
     "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SiDAE/train/2023-09-05/22-01-36/checkpoints/epoch=76-step=18095.ckpt"
+  },
+  {
+    "model": "deep-DAE",
+    "metrics": {
+      "acc": 0.8554,
+      "auc": 0.9199
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/deep-DAE/train/2023-09-07/12-56-27/checkpoints/epoch=5-step=1410.ckpt"
+  },
+  {
+    "model": "SimSiam",
+    "metrics": {
+      "acc": 0.8524,
+      "auc": 0.9183
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SimSiam/train/2023-09-07/13-04-29/checkpoints/epoch=6-step=1645.ckpt"
+  },
+  {
+    "model": "SimSiam",
+    "metrics": {
+      "acc": 0.9712,
+      "auc": 0.984
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SimSiam/train/2023-09-07/13-23-54/checkpoints/epoch=40-step=9635.ckpt"
   }
 ]

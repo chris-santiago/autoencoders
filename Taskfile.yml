@@ -22,3 +22,8 @@ tasks:
     desc: Train a model
     cmds:
       - python autoencoders/train.py {{.CLI_ARGS}}
+
+  compare:
+    desc: Compare encoders using linear baselines
+    cmds:
+      - python autoencoders/compare.py {{.CLI_ARGS}}
