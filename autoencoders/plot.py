@@ -6,6 +6,7 @@ from matplotlib import pyplot as plt
 from autoencoders.constants import Constants
 
 constants = Constants()
+plt.style.use("ggplot")
 
 
 def plot_results(results: Dict, metric: str = "acc") -> plt.Figure:
