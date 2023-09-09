@@ -151,7 +151,7 @@ hydra:
     - path: ''
       schema: structured
       provider: schema
-    output_dir: /Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/linear-comps/compare/2023-09-09/09-20-15
+    output_dir: /Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/linear-comps/compare/2023-09-09/12-47-55
     choices:
       hydra/env: default
       hydra/callbacks: null
