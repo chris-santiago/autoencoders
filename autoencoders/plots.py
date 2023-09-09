@@ -1,3 +1,4 @@
+"""Copied in from earlier, related notebooks...not used in this repo, though."""
 import matplotlib.pyplot as plt
 import torch
 

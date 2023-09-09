@@ -23,7 +23,26 @@ tasks:
     cmds:
       - python autoencoders/train.py {{.CLI_ARGS}}
 
+  eval-downstream:
+    desc: Evaluate encoders using linear baselines
+    cmds:
+      - python autoencoders/compare.py {{.CLI_ARGS}}
+    sources:
+      - autoencoders/conf/comps.yaml
+      - autoencoders/compare.py
+    generates:
+      - outputs/comps.json
+
+  plot-downstream:
+    desc: Plot encoder performance on downstream tasks
+    cmds:
+      - python autoencoders/plot.py {{.CLI_ARGS}}
+    sources:
+      - outputs/comps.json
+      - autoencoders/plot.py
+
   compare:
     desc: Compare encoders using linear baselines
     cmds:
-      - python autoencoders/compare.py {{.CLI_ARGS}}
+      - task: eval-downstream
+      - task: plot-downstream
