@@ -152,7 +152,7 @@ hydra:
     - path: ''
       schema: structured
       provider: schema
-    output_dir: /Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/deep-DAE/train/2023-08-29/21-28-11
+    output_dir: /Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/deep-DAE/train/2023-09-09/14-17-53
     choices:
       experiment: null
       callbacks: encoder

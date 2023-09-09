@@ -1,8 +1,8 @@
 hydra:
   run:
-    dir: outputs/${model.name}/${hydra.job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    dir: outputs/linear-comps/${hydra.job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
   sweep:
-    dir: outputs/${model.name}/${hydra.job.name}/multirun
+    dir: outputs/linear-comps/${hydra.job.name}/multirun
     subdir: ${hydra.job.override_dirname}/${now:%Y-%m-%d}/${now:%H-%M-%S}
   launcher:
     _target_: hydra_plugins.hydra_joblib_launcher.joblib_launcher.JoblibLauncher
@@ -122,17 +122,14 @@ hydra:
   overrides:
     hydra:
     - hydra.mode=RUN
-    task:
-    - model=deep_dae
-    - model.nn.base_channels=32
-    - model.nn.latent_dim=128
+    task: []
   job:
-    name: train
+    name: compare
     chdir: null
-    override_dirname: model.nn.base_channels=32,model.nn.latent_dim=128,model=deep_dae
+    override_dirname: ''
     id: ???
     num: ???
-    config_name: config
+    config_name: comps
     env_set: {}
     env_copy: []
     config:
@@ -154,15 +151,8 @@ hydra:
     - path: ''
       schema: structured
       provider: schema
-    output_dir: /Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/deep-DAE/train/2023-08-30/23-53-47
+    output_dir: /Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/linear-comps/compare/2023-09-09/14-22-25
     choices:
-      experiment: null
-      callbacks: encoder
-      trainer: default
-      model: deep_dae
-      scheduler@model.scheduler: cyclic
-      optimizer@model.optimizer: adam
-      data: mnist
       hydra/env: default
       hydra/callbacks: null
       hydra/job_logging: default

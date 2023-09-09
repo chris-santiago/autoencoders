@@ -9,12 +9,9 @@ defaults:
 name: deep-DAE
 
 nn:
-  _target_: autoencoders.models.deep_ae.DeepAutoEncoder
+  _target_: autoencoders.models.deep_ae.DeepDenoisingAutoEncoder
   base_channels: 16
   latent_dim: 256
   input_channels: 1
   loss_func:
     _target_: torch.nn.MSELoss
-  encoder:
-    _target_: autoencoders.modules.NoisyCNNEncoder
-    _partial_: True

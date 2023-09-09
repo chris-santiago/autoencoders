@@ -19,8 +19,20 @@ class DenoisingAutoEncoder(AutoEncoder):
         super().__init__(layers, input_shape, loss_func, optim, scheduler)
         self.encoder = nn.Sequential(
             nn.Flatten(),
-            WhiteNoise(),
             nn.Linear(self.input_shape[0] * self.input_shape[1], self.encoder_shape[0]),
             *self.encoder_layers,
             nn.Linear(self.encoder_shape[-2], self.encoder_shape[-1]),
         )
+
+        self.augment = WhiteNoise()
+
+    def training_step(self, batch, idx):
+        original = batch[0]
+        augmented = self.augment(original)
+        reconstructed = self(augmented)
+        loss = self.loss_func(original, reconstructed)
+
+        self.log("loss", loss, on_step=True, on_epoch=True, prog_bar=True, logger=False)
+        metrics = {"train-loss": loss}
+        self.log_dict(metrics, on_step=False, on_epoch=True, prog_bar=False, logger=True)
+        return loss

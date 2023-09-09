@@ -123,11 +123,11 @@ hydra:
     hydra:
     - hydra.mode=RUN
     task:
-    - model=deep_dae
+    - model=base_dae
   job:
     name: train
     chdir: null
-    override_dirname: model=deep_dae
+    override_dirname: model=base_dae
     id: ???
     num: ???
     config_name: config
@@ -152,12 +152,12 @@ hydra:
     - path: ''
       schema: structured
       provider: schema
-    output_dir: /Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/deep-DAE/train/2023-09-07/12-56-27
+    output_dir: /Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/DAE/train/2023-09-09/14-08-48
     choices:
       experiment: null
       callbacks: encoder
       trainer: default
-      model: deep_dae
+      model: base_dae
       scheduler@model.scheduler: cyclic
       optimizer@model.optimizer: adam
       data: mnist

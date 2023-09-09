@@ -7,14 +7,7 @@
     },
     "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/autoencoder/train/2023-08-29/21-13-51/checkpoints/epoch=11-step=2820.ckpt"
   },
-  {
-    "model": "DAE",
-    "metrics": {
-      "acc": 0.7964,
-      "auc": 0.8871
-    },
-    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/DAE/train/2023-08-29/21-19-54/checkpoints/epoch=10-step=2585.ckpt"
-  },
+
   {
     "model": "deep-autoencoder",
     "metrics": {
@@ -22,22 +15,6 @@
       "auc": 0.9599
     },
     "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/deep-autoencoder/train/2023-08-29/21-24-59/checkpoints/epoch=11-step=2820.ckpt"
-  },
-  {
-    "model": "deep-DAE",
-    "metrics": {
-      "acc": 0.8723,
-      "auc": 0.9292
-    },
-    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/deep-DAE/train/2023-08-29/21-28-11/checkpoints/epoch=5-step=1410.ckpt"
-  },
-  {
-    "model": "deep-DAE",
-    "metrics": {
-      "acc": 0.8581,
-      "auc": 0.9213
-    },
-    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/deep-DAE/train/2023-08-29/21-31-57/checkpoints/epoch=5-step=1410.ckpt"
   },
   {
     "model": "deep-autoencoder",
@@ -54,14 +31,6 @@
       "auc": 0.9847
     },
     "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/VAE/train/2023-08-30/21-54-33/checkpoints/epoch=32-step=7755.ckpt"
-  },
-  {
-    "model": "deep-DAE",
-    "metrics": {
-      "acc": 0.8663,
-      "auc": 0.9259
-    },
-    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/deep-DAE/train/2023-08-30/23-53-47/checkpoints/epoch=4-step=1175.ckpt"
   },
   {
     "model": "SimSiam",
@@ -136,14 +105,6 @@
     "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SiDAE/train/2023-09-05/22-01-36/checkpoints/epoch=76-step=18095.ckpt"
   },
   {
-    "model": "deep-DAE",
-    "metrics": {
-      "acc": 0.8554,
-      "auc": 0.9199
-    },
-    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/deep-DAE/train/2023-09-07/12-56-27/checkpoints/epoch=5-step=1410.ckpt"
-  },
-  {
     "model": "SimSiam",
     "metrics": {
       "acc": 0.8524,
@@ -158,5 +119,21 @@
       "auc": 0.984
     },
     "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SimSiam/train/2023-09-07/13-23-54/checkpoints/epoch=40-step=9635.ckpt"
+  },
+  {
+    "model": "DAE",
+    "metrics": {
+      "acc": 0.9389,
+      "auc": 0.9662
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/DAE/train/2023-09-09/14-08-48/checkpoints/epoch=11-step=2820.ckpt"
+  },
+  {
+    "model": "deep-DAE",
+    "metrics": {
+      "acc": 0.9715,
+      "auc": 0.9842
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/deep-DAE/train/2023-09-09/14-17-53/checkpoints/epoch=5-step=1410.ckpt"
   }
 ]
