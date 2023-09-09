@@ -40,6 +40,9 @@ tasks:
     sources:
       - outputs/comps.json
       - autoencoders/plot.py
+    generates:
+      - outputs/encoder-auc.png
+      - outpuers/encoder-accuracy.png
 
   compare:
     desc: Compare encoders using linear baselines
