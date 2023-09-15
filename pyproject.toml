@@ -24,6 +24,9 @@ docs = [
     "mkdocstrings-python>=0.9.0",
     "mkdocs-table-reader-plugin>=2.0",
 ]
+jupyter = [
+    "ipykernel>=6.25.2",
+]
 
 
 [project]
