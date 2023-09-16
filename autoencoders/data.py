@@ -69,10 +69,12 @@ class SiDAEDataset(SimSiamDataset):
     ):
         super().__init__(dataset, transform, num_ops)
         self.noise = WhiteNoise(loc, scale, factor)
+        self.augment_1 = T.RandomPerspective()
+        self.augment_2 = T.GaussianBlur(3)
 
     def __getitem__(self, idx):
         inputs = self.dataset.data.__getitem__(idx)
-        aug_1, aug_2 = [self.augment(inputs.unsqueeze(0)) for _ in range(2)]
+        aug_1, aug_2 = self.augment_1(inputs.unsqueeze(0)), self.augment_2(inputs.unsqueeze(0))
         if self.transform:
             aug_1, aug_2, inputs = (
                 self.transform(aug_1),
