@@ -1,35 +1,16 @@
-# Hydra automatically creates an output directory used to store log files and save yaml configs.
-# This directory can be configured by setting hydra.run.dir (for single hydra runs) or
-# hydra.sweep.dir/hydra.sweep.subdir (for multirun sweeps). At runtime, the path of the output
-# directory can be accessed via the hydra.runtime.output_dir variable.
-
-# Run output directory can contain user configuration variables:
-#     outputs/${now:%Y-%m-%d_%H-%M-%S}/opt:${optimizer.type}
-hydra:
-  run:
-    dir: outputs/linear-comps/${hydra.job.name}/${now:%Y-%m-%d}/${now:%H-%M-%S}
-  sweep:
-    dir: outputs/linear-comps/${hydra.job.name}/multirun
-    subdir: ${hydra.job.override_dirname}/${now:%Y-%m-%d}/${now:%H-%M-%S}
-
-defaults:
-  # Overrides must be last
-  - override hydra/launcher: joblib
-
 seed: 784
-
 models:
   ae:
     name: AutoEncoder
     module:
       _target_: autoencoders.models.base.AutoEncoder
       layers:
-        - 128
-        - 64
-        - 16
+      - 128
+      - 64
+      - 16
       input_shape:
-        - 28
-        - 28
+      - 28
+      - 28
       loss_func:
         _target_: torch.nn.MSELoss
     ckpt_path: autoencoder/train/2023-08-29/21-13-51/checkpoints/epoch=11-step=2820.ckpt
@@ -38,12 +19,12 @@ models:
     module:
       _target_: autoencoders.models.base_dae.DenoisingAutoEncoder
       layers:
-        - 128
-        - 64
-        - 64
+      - 128
+      - 64
+      - 64
       input_shape:
-        - 28
-        - 28
+      - 28
+      - 28
       loss_func:
         _target_: torch.nn.MSELoss
     ckpt_path: DAE/train/2023-09-09/14-08-48/checkpoints/epoch=11-step=2820.ckpt
@@ -103,4 +84,4 @@ models:
         latent_dim: 512
       dim: 512
       pred_dim: 512
-    ckpt_path: SiDAE/train/multirun/callbacks=siam,data.n_workers=0,data.train.dataset.factor=0.05,data=sidae,model=sidae/2023-09-15/20-50-45/checkpoints/epoch=99-step=23500.ckpt
+    ckpt_path: SiDAE/train/2023-09-15/20-15-48/checkpoints/epoch=28-step=6815.ckpt

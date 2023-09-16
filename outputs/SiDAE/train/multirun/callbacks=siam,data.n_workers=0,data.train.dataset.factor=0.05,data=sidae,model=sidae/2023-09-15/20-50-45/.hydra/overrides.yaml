@@ -1,0 +1,5 @@
+- data=sidae
+- data.train.dataset.factor=0.05
+- data.n_workers=0
+- model=sidae
+- callbacks=siam

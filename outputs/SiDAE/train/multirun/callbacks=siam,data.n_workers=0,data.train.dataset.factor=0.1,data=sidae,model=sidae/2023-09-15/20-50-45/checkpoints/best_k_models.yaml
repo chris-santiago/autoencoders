@@ -1,0 +1,2 @@
+? /Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SiDAE/train/multirun/callbacks=siam,data.n_workers=0,data.train.dataset.factor=0.1,data=sidae,model=sidae/2023-09-15/20-50-45/checkpoints/epoch=99-step=23500.ckpt
+: -0.9844214916229248
