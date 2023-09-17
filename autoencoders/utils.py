@@ -6,6 +6,7 @@ import pytorch_lightning as pl
 import torch
 import torchvision.datasets
 import torchvision.transforms
+from matplotlib import pyplot as plt
 
 import autoencoders.constants
 
@@ -65,3 +66,22 @@ def conv2d_shape(height, width, stride, padding, kernel_size, dilation=1):
     h = ((height + 2 * padding - dilation * (kernel_size - 1) - 1) / stride) + 1
     w = ((width + 2 * padding - dilation * (kernel_size - 1) - 1) / stride) + 1
     return h, w
+
+
+def plot_images(images):
+    n = len(images)
+    with plt.style.context("grayscale"):
+        fig, ax = plt.subplots(1, n, figsize=(2 * n, 2 * n))
+        if n == 1:
+            ax.tick_params(
+                left=False, right=False, labelleft=False, labelbottom=False, bottom=False
+            )
+            ax.imshow(images[0])
+        else:
+            for i in range(n):
+                ax[i].tick_params(
+                    left=False, right=False, labelleft=False, labelbottom=False, bottom=False
+                )
+            for i in range(n):
+                ax[i].imshow(images[i])
+        plt.show()
