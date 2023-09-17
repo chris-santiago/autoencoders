@@ -17,6 +17,32 @@ class WhiteNoise(nn.Module):
         return x + (noise * self.factor)
 
 
+class ImageMask(nn.Module):
+    def __init__(self, p=0.5):
+        super().__init__()
+        self.p = p
+
+    def forward(self, x):
+        p_dist = torch.distributions.Bernoulli(1 - self.p)
+        mask = p_dist.sample(sample_shape=x.shape).to(x.device)
+        return x * mask
+
+
+class RandWhiteNoise(nn.Module):
+    def __init__(self, loc=0, scale=1, factor=(0, 1)):
+        super().__init__()
+        self.loc = loc
+        self.scale = scale
+        self.factor = factor
+
+    def forward(self, x):
+        dist_f = torch.distributions.Uniform(*self.factor)
+        factor = dist_f.sample().to(x.device)
+        dist = torch.distributions.Normal(self.loc, self.scale)
+        noise = dist.sample(sample_shape=x.shape).to(x.device)
+        return x + (noise * factor)
+
+
 class EncoderLayer(nn.Module):
     def __init__(self, input_size, output_size):
         super().__init__()
