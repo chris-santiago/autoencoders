@@ -45,19 +45,20 @@ class AutoEncoderDataset(MnistDataset):
 
 
 class SimSiamDataset(MnistDataset):
-    def __init__(self, dataset, transform=scale_mnist, num_ops: int = 1):
+    def __init__(self, dataset, augment_1, augment_2, transform=scale_mnist):
         super().__init__(dataset, transform)
-        self.augment = T.RandAugment(num_ops=num_ops)
+        self.augment_1 = augment_1
+        self.augment_2 = augment_2
 
     def __getitem__(self, idx):
         inputs = self.dataset.data.__getitem__(idx)
-        aug_1, aug_2 = [self.augment(inputs.unsqueeze(0)) for _ in range(2)]
+        aug_1, aug_2 = self.augment_1(inputs.unsqueeze(0)), self.augment_2(inputs.unsqueeze(0))
         if self.transform:
             aug_1, aug_2 = self.transform(aug_1), self.transform(aug_2)
         return aug_1, aug_2
 
 
-class SiDAEDataset(SimSiamDataset):
+class SiDAEDataset(MnistDataset):
     def __init__(
         self,
         dataset,
