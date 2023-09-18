@@ -214,5 +214,13 @@
       "auc": 0.9924
     },
     "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SiDAE2/train/2023-09-17/23-30-16/checkpoints/epoch=38-step=18291.ckpt"
+  },
+  {
+    "model": "SiDAE",
+    "metrics": {
+      "acc": 0.9819,
+      "auc": 0.99
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SiDAE/train/2023-09-18/00-34-30/checkpoints/epoch=39-step=18760.ckpt"
   }
 ]

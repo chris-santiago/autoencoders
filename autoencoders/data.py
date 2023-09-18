@@ -8,7 +8,7 @@ import torchvision.transforms as T
 from omegaconf import DictConfig
 
 import autoencoders.constants
-from autoencoders.modules import RandWhiteNoise
+from autoencoders.modules import WhiteNoise
 
 constants = autoencoders.constants.Constants()
 
@@ -70,13 +70,12 @@ class SiDAEDataset(MnistDataset):
         self,
         dataset,
         transform=scale_mnist,
-        num_ops: int = 1,
         loc: int = 0,
         scale: int = 1,
         factor: float = 1.0,
     ):
-        super().__init__(dataset, transform, num_ops)
-        self.noise = RandWhiteNoise(loc, scale, factor=(0.10, 0.75))
+        super().__init__(dataset, transform)
+        self.noise = WhiteNoise(loc, scale, factor)
         self.augment_1 = T.RandomPerspective(p=1.0)
         self.augment_2 = T.ElasticTransform(alpha=100.0)
 
