@@ -1,5 +1,5 @@
 batch_size: 256
-n_workers: 10  # Multirun launcher requires n_workers=0 otherwise it fails
+n_workers: 8  # Multirun launcher requires n_workers=0 otherwise it fails
 name: mnist
 
 train:
@@ -9,7 +9,6 @@ train:
     dataset:
       _target_: autoencoders.data.get_mnist_dataset
       train: True
-    num_ops: 1
   batch_size: ${data.batch_size}
   shuffle: True
   num_workers: ${data.n_workers}
@@ -21,7 +20,6 @@ valid:
     dataset:
       _target_: autoencoders.data.get_mnist_dataset
       train: False
-    num_ops: 1
   batch_size: ${data.batch_size}
   shuffle: False
   num_workers: ${data.n_workers}

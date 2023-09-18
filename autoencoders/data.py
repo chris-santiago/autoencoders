@@ -1,9 +1,11 @@
-from typing import Callable
+from typing import Callable, List
 
+import hydra
 import torch
 import torch.utils.data
 import torchvision.datasets
 import torchvision.transforms as T
+from omegaconf import DictConfig
 
 import autoencoders.constants
 from autoencoders.modules import WhiteNoise
@@ -45,10 +47,15 @@ class AutoEncoderDataset(MnistDataset):
 
 
 class SimSiamDataset(MnistDataset):
-    def __init__(self, dataset, augment_1, augment_2, transform=scale_mnist):
+    def __init__(self, dataset, transform=scale_mnist):
         super().__init__(dataset, transform)
-        self.augment_1 = augment_1
-        self.augment_2 = augment_2
+        # unfortunately it seems that these must be instantiated within the __init__ method.
+        # passing in instantiated objects (via Hydra) causes immediate errors.
+        # I'm guessing this happens b/c dataset is copied to multiple workers
+        # no segfault when instantiated within, but error when instantiated externally (hydra)
+        # copy doesn't work either; neither does partial
+        self.augment_1 = T.RandomPerspective(p=1.0)
+        self.augment_2 = T.ElasticTransform(alpha=100.0)
 
     def __getitem__(self, idx):
         inputs = self.dataset.data.__getitem__(idx)
@@ -83,3 +90,22 @@ class SiDAEDataset(MnistDataset):
                 self.transform(inputs),
             )
         return aug_1, aug_2, self.noise(inputs).unsqueeze(0), inputs.unsqueeze(0)
+
+
+class AugmentedDataset(torch.utils.data.Dataset):
+    def __init__(self, dataset: DictConfig, augments: List[DictConfig], transform=scale_mnist):
+        self.dataset = hydra.utils.call(dataset)
+        # I don't like relying on Hydra instantiation within this class, but it otherwise
+        # leads to segmentation faults in the workers.
+        self.augments = [hydra.utils.instantiate(cfg) for cfg in augments]
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.dataset)
+
+    def __getitem__(self, idx):
+        inputs = self.dataset.data.__getitem__(idx)
+        if self.transform:
+            inputs = self.transform(inputs)
+        augmented = [aug(inputs.unsqueeze(0)) for aug in self.augments]
+        return *augmented, inputs.unsqueeze(0)
