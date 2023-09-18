@@ -190,5 +190,29 @@
       "auc": 0.9885
     },
     "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SiDAE/train/2023-09-15/22-33-09/checkpoints/epoch=44-step=10575.ckpt"
+  },
+  {
+    "model": "SiDAE",
+    "metrics": {
+      "acc": 0.9904,
+      "auc": 0.9947
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SiDAE/train/2023-09-15/23-45-29/checkpoints/epoch=55-step=13160.ckpt"
+  },
+  {
+    "model": "SimSiam",
+    "metrics": {
+      "acc": 0.9836,
+      "auc": 0.9909
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SimSiam/train/2023-09-17/21-40-54/checkpoints/epoch=39-step=9400.ckpt"
+  },
+  {
+    "model": "SiDAE2",
+    "metrics": {
+      "acc": 0.9863,
+      "auc": 0.9924
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SiDAE2/train/2023-09-17/23-30-16/checkpoints/epoch=38-step=18291.ckpt"
   }
 ]

@@ -1,0 +1,3 @@
+- model=simsiam
+- data=simsiam
+- callbacks=siam
