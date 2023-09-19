@@ -25,7 +25,6 @@ docs = [
     "mkdocs-table-reader-plugin>=2.0",
 ]
 jupyter = [
-    "ipykernel>=6.25.2",
 ]
 
 
