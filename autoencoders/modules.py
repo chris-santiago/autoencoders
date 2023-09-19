@@ -4,6 +4,15 @@ from torchvision.models import ResNet
 from torchvision.models.resnet import BasicBlock
 
 
+class Scaler(nn.Module):
+    def __init__(self, scale_by: int = 255):
+        super().__init__()
+        self.scale_by = scale_by
+
+    def forward(self, x):
+        return (x / self.scale_by).to(x.device)
+
+
 class WhiteNoise(nn.Module):
     def __init__(self, loc=0, scale=1, factor=1):
         super().__init__()
@@ -29,7 +38,7 @@ class ImageMask(nn.Module):
 
 
 class RandWhiteNoise(nn.Module):
-    def __init__(self, loc=0, scale=1, factor=(0, 1)):
+    def __init__(self, loc=0, scale=1, factor=(0.05, 0.95)):
         super().__init__()
         self.loc = loc
         self.scale = scale
