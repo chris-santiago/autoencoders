@@ -238,5 +238,21 @@
       "auc": 0.9946
     },
     "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/SiDAE2/train/2023-09-19/15-24-42/checkpoints/epoch=33-step=31892.ckpt"
+  },
+  {
+    "model": "VAE",
+    "metrics": {
+      "acc": 0.9678,
+      "auc": 0.9821
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/VAE/train/2023-09-20/14-37-09/checkpoints/epoch=25-step=6110.ckpt"
+  },
+  {
+    "model": "VAE",
+    "metrics": {
+      "acc": 0.9759,
+      "auc": 0.9867
+    },
+    "ckpt": "/Users/chrissantiago/Dropbox/GitHub/autoencoders/outputs/VAE/train/2023-09-20/14-47-15/checkpoints/epoch=33-step=7990.ckpt"
   }
 ]

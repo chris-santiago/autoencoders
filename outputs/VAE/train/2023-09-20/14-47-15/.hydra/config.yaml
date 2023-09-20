@@ -40,14 +40,15 @@ model:
   name: VAE
   nn:
     _target_: autoencoders.models.vae.VAE
-    base_channels: 32
-    latent_dim: 8
+    base_channels: 16
+    latent_dim: 256
+    dist_dim: 8
     input_channels: 1
     loss_func:
       _target_: torch.nn.MSELoss
 trainer:
   _target_: pytorch_lightning.Trainer
-  max_epochs: 100
+  max_epochs: 200
   accelerator: mps
   devices: 1
   logger:
@@ -71,7 +72,7 @@ callbacks:
     _target_: pytorch_lightning.callbacks.EarlyStopping
     monitor: train-loss
     min_delta: 0.001
-    patience: 5
+    patience: 10
     check_on_train_epoch_end: true
   model_checkpoint:
     _target_: pytorch_lightning.callbacks.ModelCheckpoint

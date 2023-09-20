@@ -1,0 +1,88 @@
+seed: 784
+models:
+  ae:
+    name: AutoEncoder
+    module:
+      _target_: autoencoders.models.base.AutoEncoder
+      layers:
+      - 128
+      - 64
+      - 16
+      input_shape:
+      - 28
+      - 28
+      loss_func:
+        _target_: torch.nn.MSELoss
+    ckpt_path: autoencoder/train/2023-08-29/21-13-51/checkpoints/epoch=11-step=2820.ckpt
+  dae:
+    name: DenoisingAutoEncoder
+    module:
+      _target_: autoencoders.models.base_dae.DenoisingAutoEncoder
+      layers:
+      - 128
+      - 64
+      - 64
+      input_shape:
+      - 28
+      - 28
+      loss_func:
+        _target_: torch.nn.MSELoss
+    ckpt_path: DAE/train/2023-09-09/14-08-48/checkpoints/epoch=11-step=2820.ckpt
+  deep-ae:
+    name: DeepAutoEncoder
+    module:
+      _target_: autoencoders.models.deep_ae.DeepAutoEncoder
+      base_channels: 16
+      latent_dim: 32
+      input_channels: 1
+      loss_func:
+        _target_: torch.nn.MSELoss
+    ckpt_path: deep-autoencoder/train/2023-08-29/21-33-38/checkpoints/epoch=9-step=2350.ckpt
+  deep-dae:
+    name: DeepDenoisingAutoEncoder
+    module:
+      _target_: autoencoders.models.deep_ae.DeepDenoisingAutoEncoder
+      base_channels: 16
+      latent_dim: 256
+      input_channels: 1
+      loss_func:
+        _target_: torch.nn.MSELoss
+    ckpt_path: deep-DAE/train/2023-09-09/14-17-53/checkpoints/epoch=5-step=1410.ckpt
+  vae:
+    name: VariationalAutoEncoder
+    module:
+      _target_: autoencoders.models.vae.VAE
+      base_channels: 16
+      latent_dim: 256
+      dist_dim: 8
+      input_channels: 1
+      loss_func:
+        _target_: torch.nn.MSELoss
+    ckpt_path: VAE/train/2023-09-20/14-47-15/checkpoints/epoch=33-step=7990.ckpt
+  simsiam:
+    name: SimSiam
+    module:
+      _target_: autoencoders.models.simsiam.SimSiam
+      encoder:
+        _target_: autoencoders.modules.ResnetEncoder
+        latent_dim: 1024
+      dim: 1024
+      pred_dim: 512
+    ckpt_path: SimSiam/train/2023-09-17/21-40-54/checkpoints/epoch=39-step=9400.ckpt
+  sidae:
+    name: SiDAE
+    module:
+      _target_: autoencoders.models.sidae.SiDAE
+      encoder:
+        _target_: autoencoders.modules.CNNEncoderProjection
+        channels_in: 1
+        base_channels: 32
+        latent_dim: 512
+      decoder:
+        _target_: autoencoders.modules.CNNDecoder
+        channels_in: 1
+        base_channels: 32
+        latent_dim: 512
+      dim: 512
+      pred_dim: 512
+    ckpt_path: SiDAE2/train/2023-09-19/15-24-42/checkpoints/epoch=33-step=31892.ckpt
