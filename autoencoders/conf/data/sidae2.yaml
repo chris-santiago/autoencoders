@@ -1,5 +1,5 @@
-batch_size: 128
-n_workers: 6  # Multirun launcher requires n_workers=0 otherwise it fails
+batch_size: 64
+n_workers: 4  # Multirun launcher requires n_workers=0 otherwise it fails
 name: mnist
 
 train:

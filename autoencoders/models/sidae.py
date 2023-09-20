@@ -70,6 +70,9 @@ class SiDAE2(SiDAE):
 
         recon_1 = self.decoder(self.encoder(x_1))
         recon_2 = self.decoder(self.encoder(x_2))
+        # TODO some figures in the original paper imply reconstruction should be compared to
+        # TODO original input, while the text refers to the respective augmented inputs
+        # TODO (i.e. x_1 and x_2)
         recon_loss = 0.5 * (self.recon_loss_func(recon_1, x) + self.recon_loss_func(recon_2, x))
 
         total_loss = (siam_loss * (1 - self.alpha)) + (recon_loss * self.alpha)

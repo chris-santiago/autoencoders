@@ -8,7 +8,7 @@ import torchvision.transforms as T
 from omegaconf import DictConfig
 
 import autoencoders.constants
-from autoencoders.modules import WhiteNoise
+from autoencoders.modules import RandWhiteNoise, Scaler, WhiteNoise
 
 constants = autoencoders.constants.Constants()
 
@@ -54,6 +54,9 @@ class SimSiamDataset(MnistDataset):
         # I'm guessing this happens b/c dataset is copied to multiple workers
         # no segfault when instantiated within, but error when instantiated externally (hydra)
         # copy doesn't work either; neither does partial
+        # TODO consider moving to `on_after_batch_transfer` of lightning module
+        # https://lightning.ai/docs/pytorch/stable/common/lightning_module.html#on-after-batch-transfer
+        # It's still a mess to instantiate via Hydra (composed/sequential transforms)
         self.augment_1 = T.RandomPerspective(p=1.0)
         self.augment_2 = T.ElasticTransform(alpha=100.0)
 
@@ -92,11 +95,19 @@ class SiDAEDataset(MnistDataset):
 
 
 class SiDAEDataset2(SimSiamDataset):
+    def __init__(self, dataset, transform=scale_mnist):
+        super().__init__(dataset, transform)
+        self.augment_1 = T.Compose(
+            [T.RandomPerspective(p=1.0), Scaler(), RandWhiteNoise(factor=(0.1, 0.9))]
+        )
+        self.augment_2 = T.Compose(
+            [T.ElasticTransform(alpha=100.0), Scaler(), RandWhiteNoise(factor=(0.1, 0.9))]
+        )
+
     def __getitem__(self, idx):
         inputs = self.dataset.data.__getitem__(idx)
         aug_1, aug_2 = self.augment_1(inputs.unsqueeze(0)), self.augment_2(inputs.unsqueeze(0))
         if self.transform:
-            aug_1, aug_2 = self.transform(aug_1), self.transform(aug_2)
             inputs = self.transform(inputs)
         return aug_1, aug_2, inputs.unsqueeze(0)
 
